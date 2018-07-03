@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Implementation-Title: digitalCourse
+Implementation-Version: 0.1.0
+Built-By: amne
+Implementation-Vendor-Id: com.afreeca.course
+Spring-Boot-Version: 2.0.3.RELEASE
+Main-Class: org.springframework.boot.loader.JarLauncher
+Start-Class: com.afreeca.course.DigitalCourseApplication
+Spring-Boot-Classes: BOOT-INF/classes/
+Spring-Boot-Lib: BOOT-INF/lib/
+Created-By: Apache Maven 3.3.9
+Build-Jdk: 1.8.0_171
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/digitalengineeringcourse
+

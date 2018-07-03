@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+    <Configuration>
+    	<Appenders>
+    		<File name="File-Appender" fileName="/tmp/logs/app.log" append="false">
+    			<PatternLayout pattern="[%-5level] %d{HH:mm:ss.SSS/zzzz} - location: [%C] method: [%M] - %msg%n"/>
+    		</File>
+    		<Console name="Console-Appender" target="SYSTEM_OUT">
+    			<PatternLayout pattern="[%-5level] %d{yyyy-MM-dd HH:mm:ss.SSS/zzzz} - %highlight{%level}{FATAL=bg_red, ERROR=red, WARN=yellow, INFO=green, DEBUG=blue} location: [%C] method: [%M]- %msg%n"/>
+    		</Console>
+    	</Appenders>
+    	<Loggers>
+    		<Logger name="com.afreeca.course" level="debug">
+    			<AppenderRef ref="File-Appender"/>
+    		</Logger>
+    		<Root level="debug">
+    			<AppenderRef ref="Console-Appender"/>
+    		</Root>
+    	</Loggers>
+    </Configuration>
