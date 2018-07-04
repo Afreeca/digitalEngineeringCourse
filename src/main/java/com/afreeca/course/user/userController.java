@@ -36,6 +36,7 @@ public class userController
 	@RequestMapping(value ="/helloWorld", method = RequestMethod.GET)
 	public Greeting greeting(@RequestParam(value="name", defaultValue="World") String name) 
 	{			
+		sendMessage("Hello world message to kafka");
 		return new Greeting(String.format(word, name));
 	}
 	
@@ -52,11 +53,13 @@ public class userController
 		user.setId(String.valueOf(uService.getNumberUsers()+1));
 		if(uService.createUser(user) == null)
 		{
-			 LOGGER.error("Failed to create user!!!");
+			sendMessage("Failed to create user ':" + user.getFirstname() + " " + user.getLastname() + "'");
+			LOGGER.error("Failed to create user!!!");
 			throw new CreateException("user failed to be created");
 		}
-			
-		 LOGGER.info("User created successfully");
+		
+		sendMessage("User '" + user.getFirstname() + " " + user.getLastname() + "' created successfully");
+		LOGGER.info("User created successfully");
 		HttpHeaders responseHeaders = new HttpHeaders();
 		responseHeaders.set("MyResponseHeader", "MyValue");
 		return new ResponseEntity<>(user, responseHeaders, HttpStatus.CREATED);
@@ -67,8 +70,8 @@ public class userController
 	{	
 		User user = uService.getUser(userId);
 		if(user == null)
-		{
-			
+		{	
+			sendMessage("User with id: '" + userId + "' not found");
 		    throw new NotFoundException("user with id" + userId +  " not found");
 		}
 		LOGGER.info("user found");
@@ -77,6 +80,7 @@ public class userController
 	
 	public void sendMessage(String msg) 
 	{
+		System.out.println("message sent");
 	    kafkaTemplate.send("digital", msg);
 	}
 }

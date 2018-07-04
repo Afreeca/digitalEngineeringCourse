@@ -16,7 +16,7 @@ import com.afreeca.course.Greeting;
 @Configuration
 public class KafkaProducerConfig 
 {
-    private String bootstrapAddress = "kuberneteconfig_kafka1_1:9092";	
+    private String bootstrapAddress = "localhost:9092";	
 
     @Bean
     public ProducerFactory<String, String> greetingProducerFactory() 
